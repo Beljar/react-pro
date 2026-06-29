@@ -8,6 +8,7 @@ import jsxA11y from "eslint-plugin-jsx-a11y";
 import react from "eslint-plugin-react";
 import reactHooks from "eslint-plugin-react-hooks";
 import simpleImportSort from "eslint-plugin-simple-import-sort";
+import globals from "globals";
 
 export default [
   js.configs.recommended,
@@ -21,6 +22,14 @@ export default [
       parser: tsParser,
       ecmaVersion: 2020,
       sourceType: "module",
+      globals: {
+        ...globals.browser,
+      },
+
+      parserOptions: {
+        project: "./tsconfig.json",
+        tsconfigRootDir: __dirname,
+      },
     },
 
     plugins: {
