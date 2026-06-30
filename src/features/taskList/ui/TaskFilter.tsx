@@ -2,33 +2,31 @@ import React from "react";
 
 import { Filter } from "../model/useTasks";
 
+import styles from "./TaskFilter.module.css";
+
 interface ITaskFilter {
   value: Filter;
   onChange: (value: Filter) => void;
 }
 
-const isFilter = (value: string): value is Filter => {
-  return Object.values(Filter).includes(value as Filter);
+const FILTER_TEXTS = {
+  [Filter.ALL]: "Все",
+  [Filter.COMPLETED]: "Выполнены",
+  [Filter.INCOMPLETE]: "Не выполнены",
 };
 
+const FILTER_VALUES = Object.values(Filter) as Filter[];
+
 export const TaskFilter: React.FC<ITaskFilter> = ({ value, onChange }) => {
-  const handleChange = (ev: React.ChangeEvent<HTMLSelectElement>) => {
-    const targetValue = ev.target.value;
-    const filterValue = isFilter(targetValue) ? targetValue : Filter.ALL;
-    onChange(filterValue);
+  const onClick = () => {
+    const index = FILTER_VALUES.indexOf(value);
+    const nextIndex = (index + 1) % FILTER_VALUES.length;
+    onChange(FILTER_VALUES[nextIndex]);
   };
+
   return (
-    <div>
-      <select
-        name="filter-task"
-        id="filter-task"
-        onChange={handleChange}
-        value={value}
-      >
-        <option value={Filter.ALL}>Все</option>
-        <option value={Filter.COMPLETED}>Выполнены</option>
-        <option value={Filter.INCOMPLETE}>Не выполнены</option>
-      </select>
-    </div>
+    <button className={styles.btn} onClick={onClick}>
+      {FILTER_TEXTS[value]}
+    </button>
   );
 };

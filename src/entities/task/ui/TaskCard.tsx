@@ -8,12 +8,12 @@ import styles from "./TaskCard.module.css";
 interface ITaskProps {
   task: Task;
   actions?: {
-    onDelete?: () => void;
+    onDelete?: (id: string) => void;
   };
 }
 
 export const TaskCard: React.FC<ITaskProps> = ({ task, actions }) => {
-  const { title, completed } = task;
+  const { id, title, completed } = task;
   const { onDelete } = actions || {};
   return (
     <div className={styles.task}>
@@ -21,7 +21,9 @@ export const TaskCard: React.FC<ITaskProps> = ({ task, actions }) => {
         <div>{completed ? "Выполнено" : "Не выполнено"}</div>
         {actions ? (
           <div>
-            {onDelete ? <button onClick={onDelete}>Удалить</button> : null}
+            {onDelete ? (
+              <button onClick={() => onDelete(id)}>Удалить</button>
+            ) : null}
           </div>
         ) : null}
       </div>

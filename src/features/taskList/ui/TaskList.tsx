@@ -1,27 +1,21 @@
-import React from "react";
+import React, { type ComponentProps } from "react";
 
-import { mockTasks } from "entities/task/mocks";
-
-import { useTasks } from "../model";
-import { TaskFilter } from "./TaskFilter";
-import { TaskCard } from "entities/task";
+import { type Task, TaskCard } from "entities/task";
 
 import styles from "./TaskList.module.css";
 
-export const TaskList: React.FC = () => {
-  const { tasks, filter, setFilter, removeTask } = useTasks(mockTasks);
+type TTaskProps = ComponentProps<typeof TaskCard>;
 
+interface ITaskList extends Omit<TTaskProps, "task"> {
+  tasks: Task[];
+}
+
+export const TaskList: React.FC<ITaskList> = ({ tasks, ...taskProps }) => {
   return (
-    <div className={styles.container}>
-      <TaskFilter value={filter} onChange={setFilter} />
-      <div className={styles.list}>
-        {tasks.map((task) => (
-          <TaskCard
-            task={task}
-            actions={{ onDelete: () => removeTask(task.id) }}
-          />
-        ))}
-      </div>
+    <div className={styles.list}>
+      {tasks.map((task) => (
+        <TaskCard task={task} {...taskProps} />
+      ))}
     </div>
   );
 };
