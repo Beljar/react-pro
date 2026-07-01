@@ -39,6 +39,7 @@ export const TaskList: React.FC = () => {
       <div className={styles.list}>
         {tasks.map((task) => (
           <TaskCard
+            key={task.id}
             task={task}
             actions={{
               onDelete: removeTask,
