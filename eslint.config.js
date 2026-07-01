@@ -1,4 +1,3 @@
-import js from "@eslint/js";
 import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
 import tsParser from "@typescript-eslint/parser";
 import prettier from "eslint-config-prettier";
@@ -11,7 +10,6 @@ import simpleImportSort from "eslint-plugin-simple-import-sort";
 import globals from "globals";
 
 export default [
-  js.configs.recommended,
   reactHooks.configs.flat.recommended,
   prettier,
 
@@ -27,7 +25,10 @@ export default [
       },
 
       parserOptions: {
-        projectService: "./tsconfig.json",
+        projectService: {
+          allowDefaultProject: ["eslint.config.js"],
+          defaultProject: "tsconfig.json",
+        },
       },
     },
 
@@ -88,7 +89,7 @@ export default [
             },
             {
               from: { type: "features" },
-              allow: { to: { type: "entities", "shared" } },
+              allow: { to: { type: ["entities", "shared"] } },
             },
             {
               from: { type: "widgets" },
@@ -96,7 +97,9 @@ export default [
             },
             {
               from: { type: "pages" },
-              allow: { to: { type: ["entities", "features", "widgets", "shared"] } },
+              allow: {
+                to: { type: ["entities", "features", "widgets", "shared"] },
+              },
             },
           ],
         },

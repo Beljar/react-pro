@@ -14,7 +14,7 @@
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "emitDeclarationOnly": true,
+    "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -22,15 +22,15 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": false,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "src",
+
     "paths": {
-      "shared/*": ["shared/*"],
-      "entities/*": ["entities/*"],
-      "features/*": ["features/*"],
-      "widgets/*": ["widgets/*"],
-      "pages/*": ["pages/*"],
-      "app/*": ["app/*"]
+      "shared/*": ["./src/shared/*"],
+      "entities/*": ["./src/entities/*"],
+      "features/*": ["./src/features/*"],
+      "widgets/*": ["./src/widgets/*"],
+      "pages/*": ["./src/pages/*"],
+      "app/*": ["./src/app/*"]
     }
   },
-  "include": ["./src/**/*", "eslint.config.js"]
+  "include": ["src", "eslint.config.js"]
 }
