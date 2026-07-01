@@ -1,2 +1,2 @@
-export { TaskList, TaskFilter } from './ui'
-export { useTasks } from './model'
+export { TaskList } from './ui'
+export { useTasks, Filter } from './model'

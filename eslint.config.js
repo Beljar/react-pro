@@ -88,15 +88,15 @@ export default [
             },
             {
               from: { type: "features" },
-              allow: { to: { type: "entities" } },
+              allow: { to: { type: "entities", "shared" } },
             },
             {
               from: { type: "widgets" },
-              allow: { to: { type: ["entities", "features"] } },
+              allow: { to: { type: ["entities", "features", "shared"] } },
             },
             {
               from: { type: "pages" },
-              allow: { to: { type: ["entities", "features", "widgets"] } },
+              allow: { to: { type: ["entities", "features", "widgets", "shared"] } },
             },
           ],
         },
