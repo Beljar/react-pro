@@ -1,21 +1,51 @@
-import React, { type ComponentProps } from "react";
+import React from "react";
 
-import { type Task, TaskCard } from "entities/task";
+import { FilterButton } from "shared/ui/FilterButton";
+
+import { TaskCard } from "entities/task";
+import { mockTasks } from "entities/task/mocks";
+
+import { Filter, useTasks } from "../model";
 
 import styles from "./TaskList.module.css";
 
-type TTaskProps = ComponentProps<typeof TaskCard>;
+const FILTER_OPTIONS = [
+  {
+    label: "Все",
+    value: Filter.ALL,
+  },
+  {
+    label: "Выполнены",
+    value: Filter.COMPLETED,
+  },
+  {
+    label: "Не выполнены",
+    value: Filter.INCOMPLETE,
+  },
+];
 
-interface ITaskList extends Omit<TTaskProps, "task"> {
-  tasks: Task[];
-}
+export const TaskList: React.FC = () => {
+  const { tasks, filter, setFilter, removeTask } = useTasks(mockTasks);
 
-export const TaskList: React.FC<ITaskList> = ({ tasks, ...taskProps }) => {
   return (
-    <div className={styles.list}>
-      {tasks.map((task) => (
-        <TaskCard task={task} {...taskProps} />
-      ))}
-    </div>
+    <>
+      <div>
+        <FilterButton<Filter>
+          value={filter}
+          onChange={setFilter}
+          options={FILTER_OPTIONS}
+        />
+      </div>
+      <div className={styles.list}>
+        {tasks.map((task) => (
+          <TaskCard
+            task={task}
+            actions={{
+              onDelete: removeTask,
+            }}
+          />
+        ))}
+      </div>
+    </>
   );
 };
