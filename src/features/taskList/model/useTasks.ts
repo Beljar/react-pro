@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { type Task } from 'entities/task';
 
@@ -31,10 +31,10 @@ export function useTasks(initial: Task[]): {
     );
   };
 
-  const removeTask = (id: string) => {
+  const removeTask = useCallback((id: string) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));
     setFilteredTasks((prev) => prev.filter((task) => task.id !== id));
-  };
+  }, []);
 
   return {
     tasks: filteredTasks,

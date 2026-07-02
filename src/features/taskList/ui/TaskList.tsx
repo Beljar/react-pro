@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { FilterButton } from 'shared/ui/FilterButton';
 
@@ -27,6 +27,12 @@ const FILTER_OPTIONS = [
 export const TaskList: React.FC = () => {
   const { tasks, filter, setFilter, removeTask } = useTasks(mockTasks);
 
+  const actions = useMemo(() => {
+    return {
+      onDelete: removeTask,
+    };
+  }, [removeTask]);
+
   return (
     <>
       <div>
@@ -38,13 +44,7 @@ export const TaskList: React.FC = () => {
       </div>
       <div className={styles.list}>
         {tasks.map((task) => (
-          <TaskCard
-            key={task.id}
-            task={task}
-            actions={{
-              onDelete: removeTask,
-            }}
-          />
+          <TaskCard key={task.id} task={task} actions={actions} />
         ))}
       </div>
     </>
