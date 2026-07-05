@@ -1,1 +1,1 @@
-export { TaskWidget } from "./TaskWidget";
+export { TaskWidget } from './TaskWidget';

@@ -1,6 +1,6 @@
-import { TaskList } from "features/taskList";
+import { TaskList } from 'features/taskList';
 
-import styles from "./TaskWidget.module.css";
+import styles from './TaskWidget.module.css';
 
 export const TaskWidget = () => {
   return (

@@ -1,10 +1,10 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { PageNotFound } from "shared/index";
+import { PageNotFound } from 'shared/index';
 
-import { TaskPage } from "pages/tasks";
+import { TaskPage } from 'pages/tasks';
 
-import "./index.css";
+import './index.css';
 
 export const AppRouter = () => {
   return (

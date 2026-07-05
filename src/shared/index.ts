@@ -1,2 +1,2 @@
-export { UnderDevelopmentStub } from './ui/UnderDevelopmentStub'
-export { PageNotFound } from './ui/PageNotFoundStub'
+export { UnderDevelopmentStub } from './ui/UnderDevelopmentStub';
+export { PageNotFound } from './ui/PageNotFoundStub';

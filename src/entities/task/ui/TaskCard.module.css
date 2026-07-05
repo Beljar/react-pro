@@ -1,44 +1,44 @@
 .task {
-    width: 300px;
-    height: 150px;
-    display: flex;
-    flex-direction: column;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    border-radius: 10px;
-    cursor: default;
+  width: 300px;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  border-radius: 10px;
+  cursor: default;
 }
 
 .task:hover {
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    color: white;
-    background-color: rgb(221, 48, 48);
-    border-radius: 10px 10px 0 0;
-    font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: white;
+  background-color: rgb(221, 48, 48);
+  border-radius: 10px 10px 0 0;
+  font-size: 12px;
 }
 
 .completed {
-    background-color: rgb(112, 183, 112);
+  background-color: rgb(112, 183, 112);
 }
 
 .title {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    white-space: nowrap;
-    padding: 10px;
-    flex-grow: 1;
-    font-size: 16px;
-    font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px;
+  flex-grow: 1;
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .title_text {
-    text-overflow: ellipsis;
-    overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }

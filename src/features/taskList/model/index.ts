@@ -1,1 +1,1 @@
-export { useTasks, Filter } from './useTasks'
+export { useTasks, Filter } from './useTasks';

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { TaskWidget } from "widgets/task";
+import { TaskWidget } from 'widgets/task';
 
 export const TaskPage: React.FC = () => {
   return (

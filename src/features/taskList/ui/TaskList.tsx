@@ -1,25 +1,25 @@
-import React from "react";
+import React from 'react';
 
-import { FilterButton } from "shared/ui/FilterButton";
+import { FilterButton } from 'shared/ui/FilterButton';
 
-import { TaskCard } from "entities/task";
-import { mockTasks } from "entities/task/mocks";
+import { TaskCard } from 'entities/task';
+import { mockTasks } from 'entities/task/mocks';
 
-import { Filter, useTasks } from "../model";
+import { Filter, useTasks } from '../model';
 
-import styles from "./TaskList.module.css";
+import styles from './TaskList.module.css';
 
 const FILTER_OPTIONS = [
   {
-    label: "Все",
+    label: 'Все',
     value: Filter.ALL,
   },
   {
-    label: "Выполнены",
+    label: 'Выполнены',
     value: Filter.COMPLETED,
   },
   {
-    label: "Не выполнены",
+    label: 'Не выполнены',
     value: Filter.INCOMPLETE,
   },
 ];

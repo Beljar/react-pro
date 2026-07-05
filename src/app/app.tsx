@@ -1,9 +1,9 @@
-import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 
-import { AppRouter } from "./router.tsx";
+import { AppRouter } from './router.tsx';
 
-import "./index.css";
+import './index.css';
 
 const App = () => {
   return (
@@ -13,4 +13,4 @@ const App = () => {
   );
 };
 
-createRoot(document.getElementById("root")!).render(<App />);
+createRoot(document.getElementById('root')!).render(<App />);

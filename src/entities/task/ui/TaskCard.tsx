@@ -1,9 +1,9 @@
-import clsx from "clsx";
-import React from "react";
+import clsx from 'clsx';
+import React from 'react';
 
-import type { Task } from "../model";
+import type { Task } from '../model';
 
-import styles from "./TaskCard.module.css";
+import styles from './TaskCard.module.css';
 
 interface ITaskProps {
   task: Task;
@@ -18,7 +18,7 @@ export const TaskCard: React.FC<ITaskProps> = ({ task, actions }) => {
   return (
     <div className={styles.task}>
       <div className={clsx(styles.header, { [styles.completed]: completed })}>
-        <div>{completed ? "Выполнено" : "Не выполнено"}</div>
+        <div>{completed ? 'Выполнено' : 'Не выполнено'}</div>
         {actions ? (
           <div>
             {onDelete ? (
