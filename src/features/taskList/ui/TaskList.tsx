@@ -3,7 +3,6 @@ import React, { useMemo } from 'react';
 import { FilterButton } from 'shared/ui/FilterButton';
 
 import { TaskCard } from 'entities/task';
-import { mockTasks } from 'entities/task/mocks';
 
 import { Filter, useTasks } from '../model';
 
@@ -25,7 +24,7 @@ const FILTER_OPTIONS = [
 ];
 
 export const TaskList: React.FC = () => {
-  const { tasks, filter, setFilter, removeTask } = useTasks(mockTasks);
+  const { tasks, filter, setFilter, removeTask } = useTasks();
 
   const actions = useMemo(() => {
     return {

@@ -1,6 +1,7 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { type Task } from 'entities/task';
+import { useGetTasksQuery } from 'entities/task/api/tasksApi';
 
 export enum Filter {
   ALL = 'all',
@@ -8,14 +9,22 @@ export enum Filter {
   INCOMPLETE = 'incomplete',
 }
 
-export function useTasks(initial: Task[]): {
+export function useTasks(): {
   tasks: Task[]; // отфильтрованные задачи
   filter: Filter; // текущий фильтр
   setFilter: (f: Filter) => void; // смена фильтра
   removeTask: (id: string) => void; // удаление задачи по ID
 } {
+  const { data, error, isLoading } = useGetTasksQuery();
+
   const [filter, setFilter] = useState<Filter>(Filter.ALL);
-  const [tasks, setTasks] = useState<Task[]>(initial);
+  const [tasks, setTasks] = useState<Task[]>([]);
+
+  useEffect(() => {
+    if (data) {
+      setTasks(data);
+    }
+  }, [data]);
 
   const removeTask = useCallback((id: string) => {
     setTasks((prev) => prev.filter((task) => task.id !== id));

@@ -102,6 +102,14 @@ export default [
                 to: { type: ['entities', 'features', 'widgets', 'shared'] },
               },
             },
+            {
+              from: { type: 'app' },
+              allow: {
+                to: {
+                  type: ['entities', 'features', 'widgets', 'shared', 'pages'],
+                },
+              },
+            },
           ],
         },
       ],
