@@ -62,6 +62,7 @@ export default [
 
     rules: {
       ...boundaries.configs.recommended.rules,
+      'react-hooks/set-state-in-effect': 'off',
       'simple-import-sort/imports': [
         'warn',
         {
