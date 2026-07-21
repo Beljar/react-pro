@@ -1,1 +1,1 @@
-export { valuesSchema } from './schema';
+export { valuesSchema, type ValuesSchema } from './schema';

@@ -1,52 +1,101 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { type SubmitHandler, useForm } from 'react-hook-form';
+import clsx from 'clsx';
+import { type SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
 
-import { valuesSchema } from '../model';
+import { type ValuesSchema, valuesSchema } from '../model';
 
 import styles from './styles.module.scss';
-
-type Inputs = {
-  userName: string;
-  email: string;
-  password: string;
-  passwordRepeat: string;
-};
 
 export const Signup = () => {
   const {
     register,
     handleSubmit,
-    watch,
+    control,
     formState: { errors },
-  } = useForm<Inputs>({
+  } = useForm<ValuesSchema>({
     resolver: zodResolver(valuesSchema),
     mode: 'onBlur',
   });
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<ValuesSchema> = (data) => console.log(data);
+
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: 'links',
+  });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.form_item}>
-        <input {...register('userName')} />
-        {errors.userName && <span>{errors.userName.message}</span>}
+        <input
+          {...register('userName')}
+          className={clsx({ [styles.error]: errors.userName })}
+        />
+        <span className={styles.error_text}>{errors.userName?.message}</span>
       </div>
 
       <div className={styles.form_item}>
-        <input {...register('email', { required: true })} />
-        {errors.email && <span>{errors.email.message}</span>}
+        <input
+          {...register('email', { required: true })}
+          className={clsx({ [styles.error]: errors.email })}
+        />
+        <span className={styles.error_text}>{errors.email?.message}</span>
       </div>
 
       <div className={styles.form_item}>
-        <input {...register('password', { required: true })} />
-        {errors.password && <span>{errors.password.message}</span>}
+        <input
+          {...register('password', { required: true })}
+          className={clsx({ [styles.error]: errors.password })}
+        />
+        <span className={styles.error_text}>{errors.password?.message}</span>
       </div>
 
       <div className={styles.form_item}>
-        <input {...register('passwordRepeat', { required: true })} />
-        {errors.passwordRepeat && <span>{errors.passwordRepeat.message}</span>}
+        <input
+          {...register('passwordRepeat', { required: true })}
+          className={clsx({ [styles.error]: errors.passwordRepeat })}
+        />
+        <span className={styles.error_text}>
+          {errors.passwordRepeat?.message}
+        </span>
       </div>
 
-      <input type="submit" />
+      {fields.map((field, index) => (
+        <div key={field.id} className={styles.form_item}>
+          <div className={styles.form_item_links}>
+            <div className={styles.form_item_links_input}>
+              <input
+                {...register(`links.${index}.link`)}
+                className={clsx({
+                  [styles.error]: errors.links?.[index]?.link,
+                })}
+              />
+            </div>
+
+            <button type="button" onClick={() => remove(index)}>
+              x
+            </button>
+          </div>
+
+          <span className={styles.error_text}>
+            {errors.links?.[index]?.link?.message}
+          </span>
+        </div>
+      ))}
+
+      <div className={styles.form_item}>
+        <button
+          className={styles.form_item_button}
+          type="button"
+          onClick={() => append({ link: '' })}
+        >
+          Добавить ссылку
+        </button>
+      </div>
+      <div className={styles.form_item}>
+        <button className={styles.form_item_button} type="submit">
+          Отправить
+        </button>
+      </div>
     </form>
   );
 };
