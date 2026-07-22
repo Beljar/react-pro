@@ -16,7 +16,10 @@ export const valuesSchema = zod
     passwordRepeat: zod.string().min(1, { message: REQUIRED_MESSAGE }),
     links: zod.array(
       zod.object({
-        link: zod.string().url('Некорректный URL'),
+        link: zod
+          .string()
+          .min(1, { message: REQUIRED_MESSAGE })
+          .url('Некорректный URL'),
       })
     ),
   })

@@ -1,6 +1,9 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import clsx from 'clsx';
+import { useMemo, useState } from 'react';
 import { type SubmitHandler, useFieldArray, useForm } from 'react-hook-form';
+
+import { Button, TextInput } from 'shared/ui';
 
 import { type ValuesSchema, valuesSchema } from '../model';
 
@@ -12,11 +15,31 @@ export const Signup = () => {
     handleSubmit,
     control,
     formState: { errors },
+    reset,
   } = useForm<ValuesSchema>({
     resolver: zodResolver(valuesSchema),
-    mode: 'onBlur',
+    mode: 'onChange',
   });
-  const onSubmit: SubmitHandler<ValuesSchema> = (data) => console.log(data);
+
+  const [lastSubmittedData, setLastSubmittedData] =
+    useState<ValuesSchema | null>(null);
+
+  const stringifiedData = useMemo(() => {
+    try {
+      return lastSubmittedData
+        ? JSON.stringify(lastSubmittedData, null, 2)
+        : '';
+    } catch (error) {
+      console.error('Error stringifying data:', error);
+      return 'Error stringifying data';
+    }
+  }, [lastSubmittedData]);
+
+  const onSubmit: SubmitHandler<ValuesSchema> = (data) => {
+    console.log(data);
+    setLastSubmittedData(data);
+    reset();
+  };
 
   const { fields, append, remove } = useFieldArray({
     control,
@@ -26,76 +49,80 @@ export const Signup = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <div className={styles.form_item}>
-        <input
+        <TextInput
           {...register('userName')}
           className={clsx({ [styles.error]: errors.userName })}
+          error={errors.userName?.message}
+          placeholder="Имя пользователя"
         />
-        <span className={styles.error_text}>{errors.userName?.message}</span>
       </div>
 
       <div className={styles.form_item}>
-        <input
+        <TextInput
           {...register('email', { required: true })}
           className={clsx({ [styles.error]: errors.email })}
+          error={errors.email?.message}
+          placeholder="Email"
         />
-        <span className={styles.error_text}>{errors.email?.message}</span>
       </div>
 
       <div className={styles.form_item}>
-        <input
+        <TextInput
           {...register('password', { required: true })}
           className={clsx({ [styles.error]: errors.password })}
+          error={errors.password?.message}
+          placeholder="Пароль"
         />
-        <span className={styles.error_text}>{errors.password?.message}</span>
       </div>
 
       <div className={styles.form_item}>
-        <input
+        <TextInput
           {...register('passwordRepeat', { required: true })}
           className={clsx({ [styles.error]: errors.passwordRepeat })}
+          error={errors.passwordRepeat?.message}
+          placeholder="Повторите пароль"
         />
-        <span className={styles.error_text}>
-          {errors.passwordRepeat?.message}
-        </span>
       </div>
 
       {fields.map((field, index) => (
         <div key={field.id} className={styles.form_item}>
           <div className={styles.form_item_links}>
             <div className={styles.form_item_links_input}>
-              <input
+              <TextInput
                 {...register(`links.${index}.link`)}
                 className={clsx({
                   [styles.error]: errors.links?.[index]?.link,
                 })}
+                error={errors.links?.[index]?.link?.message}
+                placeholder="Ссылка на соцсеть"
               />
             </div>
 
-            <button type="button" onClick={() => remove(index)}>
+            <Button
+              type="button"
+              onClick={() => remove(index)}
+              variant="secondary"
+            >
               x
-            </button>
+            </Button>
           </div>
-
-          <span className={styles.error_text}>
-            {errors.links?.[index]?.link?.message}
-          </span>
         </div>
       ))}
 
       <div className={styles.form_item}>
-        <button
-          className={styles.form_item_button}
-          type="button"
-          onClick={() => append({ link: '' })}
-        >
+        <Button type="button" onClick={() => append({ link: '' })}>
           Добавить ссылку
-        </button>
+        </Button>
       </div>
       <div className={styles.form_item}>
-        <button className={styles.form_item_button} type="submit">
-          Отправить
-        </button>
+        <Button type="submit">Отправить</Button>
       </div>
+      {stringifiedData && (
+        <div className={styles.form_item}>
+          <p>Last submitted data:</p>
+          <pre>{stringifiedData}</pre>
+        </div>
+      )}
     </form>
   );
 };
