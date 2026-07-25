@@ -1,10 +1,11 @@
 import clsx from 'clsx';
-import type { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes, Ref } from 'react';
 
 import styles from './TextInput.module.scss';
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string | null;
+  ref?: Ref<HTMLInputElement>;
 }
 
 export const TextInput = ({ className, error, ...props }: TextInputProps) => {
