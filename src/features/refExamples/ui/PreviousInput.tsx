@@ -19,7 +19,7 @@ export const PreviousInput = () => {
             setValue(e.target.value);
           }}
         />
-        <span>Previous: {valuesRef.current}</span>
+        <span>Предыдущее значение: {valuesRef.current}</span>
       </div>
     </div>
   );
