@@ -6,6 +6,7 @@ const menuItems = [
   { label: 'Мои задачи', to: '/tasks' },
   { label: 'Регистрация', to: '/signup' },
   { label: 'Подписка', to: '/subscribe' },
+  { label: 'Ref examples', to: '/ref-examples' },
 ];
 
 export const NavigationMenu = () => {

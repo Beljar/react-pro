@@ -48,7 +48,7 @@ export const AppRouter = () => {
             </PageLayout>
           }
         />
-        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route path="/" element={<Navigate to="/ref-examples" replace />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
