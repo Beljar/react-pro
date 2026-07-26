@@ -3,6 +3,7 @@ import {
   DebouncedLogger,
   FocusTracker,
   PreviousInput,
+  WebSocketLogger,
 } from 'features/refExamples/ui';
 
 import styles from './styles.module.scss';
@@ -22,6 +23,10 @@ export const RefExamplesPage = () => {
       <div className={styles.container}>
         <h2>Debounced Logger</h2>
         <DebouncedLogger />
+      </div>
+      <div className={styles.container}>
+        <h2>WebSocket Logger</h2>
+        <WebSocketLogger />
       </div>
     </div>
   );
