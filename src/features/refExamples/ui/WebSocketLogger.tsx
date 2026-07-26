@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 export const WebSocketLogger = () => {
   const socketRef = useRef<WebSocket | null>(null);
