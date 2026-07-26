@@ -1,5 +1,9 @@
 import { ClickTimer } from 'features/refExamples';
-import { FocusTracker, PreviousInput } from 'features/refExamples/ui';
+import {
+  DebouncedLogger,
+  FocusTracker,
+  PreviousInput,
+} from 'features/refExamples/ui';
 
 import styles from './styles.module.scss';
 
@@ -14,6 +18,10 @@ export const RefExamplesPage = () => {
       <div className={styles.container}>
         <h2>Focus Tracker</h2>
         <FocusTracker />
+      </div>
+      <div className={styles.container}>
+        <h2>Debounced Logger</h2>
+        <DebouncedLogger />
       </div>
     </div>
   );
