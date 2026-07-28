@@ -10,47 +10,54 @@ import { TaskPage } from 'pages/tasks';
 
 import { NavigationMenu } from 'widgets/navigationMenu';
 
+import { AuthContextProvider } from 'features/authRouting/AuthContextProvider';
+import { ProtectedRoute } from 'features/authRouting/ProtectedRoute';
+
 import './index.css';
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/tasks"
-          element={
-            <PageLayout Header={<NavigationMenu />}>
-              <TaskPage />
-            </PageLayout>
-          }
-        />
-        <Route
-          path="/signup"
-          element={
-            <PageLayout Header={<NavigationMenu />}>
-              <SignupPage />
-            </PageLayout>
-          }
-        />
-        <Route
-          path="/subscribe"
-          element={
-            <PageLayout Header={<NavigationMenu />}>
-              <SubscribePage />
-            </PageLayout>
-          }
-        />
-        <Route
-          path="/ref-examples"
-          element={
-            <PageLayout Header={<NavigationMenu />}>
-              <RefExamplesPage />
-            </PageLayout>
-          }
-        />
-        <Route path="/" element={<Navigate to="/ref-examples" replace />} />
-        <Route path="*" element={<PageNotFound />} />
-      </Routes>
+      <AuthContextProvider>
+        <Routes>
+          <Route
+            path="/tasks"
+            element={
+              <PageLayout Header={<NavigationMenu />}>
+                <TaskPage />
+              </PageLayout>
+            }
+          />
+          <Route
+            path="/signup"
+            element={
+              <PageLayout Header={<NavigationMenu />}>
+                <SignupPage />
+              </PageLayout>
+            }
+          />
+          <Route
+            path="/subscribe"
+            element={
+              <PageLayout Header={<NavigationMenu />}>
+                <SubscribePage />
+              </PageLayout>
+            }
+          />
+          <Route
+            path="/ref-examples"
+            element={
+              <ProtectedRoute>
+                <PageLayout Header={<NavigationMenu />}>
+                  <RefExamplesPage />
+                </PageLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route path="/" element={<Navigate to="/ref-examples" replace />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </AuthContextProvider>
     </BrowserRouter>
   );
 };

@@ -1,0 +1,1 @@
+export { lsActions } from './localStorage';
