@@ -4,6 +4,7 @@ import { Navigate } from 'react-router-dom';
 import { lsActions } from 'shared/utils';
 
 import { AuthContext } from './AuthContext';
+import type { IAuthData } from './model/types';
 
 interface IAuthContexProvider {
   children: React.ReactNode;
@@ -23,7 +24,19 @@ export const AuthContextProvider = ({ children }: IAuthContexProvider) => {
     return { ...contextValueFromStore, ...initialContextValue };
   });
 
+  const login = (authData: IAuthData) => {
+    lsActions.put('auth', authData);
+    setContextValue(authData);
+  };
+
+  const logout = () => {
+    lsActions.delete('auth');
+    setContextValue(initialContextValue);
+  };
+
   return (
-    <AuthContext.Provider value={contextValue}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ ...contextValue, login }}>
+      {children}
+    </AuthContext.Provider>
   );
 };

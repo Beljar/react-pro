@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { PageNotFound } from 'shared/ui';
 import { PageLayout } from 'shared/ui/PageLayout';
 
+import { LoginPage } from 'pages/login/ui';
 import { RefExamplesPage } from 'pages/refExamples/ui';
 import { SignupPage } from 'pages/signup/ui';
 import { SubscribePage } from 'pages/subscribe/ui';
@@ -33,6 +34,14 @@ export const AppRouter = () => {
             element={
               <PageLayout Header={<NavigationMenu />}>
                 <SignupPage />
+              </PageLayout>
+            }
+          />
+          <Route
+            path="/login"
+            element={
+              <PageLayout Header={<NavigationMenu />}>
+                <LoginPage />
               </PageLayout>
             }
           />
