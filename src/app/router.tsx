@@ -4,6 +4,7 @@ import { PageNotFound } from 'shared/ui';
 import { PageLayout } from 'shared/ui/PageLayout';
 
 import { LoginPage } from 'pages/login/ui';
+import { ProfilePage } from 'pages/profile';
 import { RefExamplesPage } from 'pages/refExamples/ui';
 import { SignupPage } from 'pages/signup/ui';
 import { SubscribePage } from 'pages/subscribe/ui';
@@ -59,6 +60,16 @@ export const AppRouter = () => {
               <ProtectedRoute>
                 <PageLayout Header={<NavigationMenu />}>
                   <RefExamplesPage />
+                </PageLayout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              <ProtectedRoute>
+                <PageLayout Header={<NavigationMenu />}>
+                  <ProfilePage />
                 </PageLayout>
               </ProtectedRoute>
             }

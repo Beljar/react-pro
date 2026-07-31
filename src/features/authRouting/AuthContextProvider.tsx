@@ -21,7 +21,7 @@ const initialContextValue = {
 export const AuthContextProvider = ({ children }: IAuthContexProvider) => {
   const [contextValue, setContextValue] = useState(() => {
     const contextValueFromStore = lsActions.get('auth') || {};
-    return { ...contextValueFromStore, ...initialContextValue };
+    return { ...initialContextValue, ...contextValueFromStore };
   });
 
   const login = (authData: IAuthData) => {
