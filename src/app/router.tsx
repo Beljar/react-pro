@@ -3,7 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { PageNotFound } from 'shared/ui';
 import { PageLayout } from 'shared/ui/PageLayout';
 
-import { LoginPage } from 'pages/login/ui';
+import { LoginPage } from 'pages/login';
 import { ProfilePage } from 'pages/profile';
 import { PublicPage } from 'pages/public';
 import { RefExamplesPage } from 'pages/refExamples/ui';

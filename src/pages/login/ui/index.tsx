@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 
-import type { IAuthData } from 'features/authRouting/model/types';
-import { useAuth } from 'features/authRouting/useAuth';
+import { type IAuthData, useAuth } from 'features/authRouting';
 import { Login } from 'features/login';
 
 import styles from './styles.module.scss';
