@@ -5,6 +5,7 @@ import { PageLayout } from 'shared/ui/PageLayout';
 
 import { LoginPage } from 'pages/login/ui';
 import { ProfilePage } from 'pages/profile';
+import { PublicPage } from 'pages/public';
 import { RefExamplesPage } from 'pages/refExamples/ui';
 import { SignupPage } from 'pages/signup/ui';
 import { SubscribePage } from 'pages/subscribe/ui';
@@ -57,11 +58,17 @@ export const AppRouter = () => {
           <Route
             path="/ref-examples"
             element={
-              <ProtectedRoute>
-                <PageLayout Header={<NavigationMenu />}>
-                  <RefExamplesPage />
-                </PageLayout>
-              </ProtectedRoute>
+              <PageLayout Header={<NavigationMenu />}>
+                <RefExamplesPage />
+              </PageLayout>
+            }
+          />
+          <Route
+            path="/public"
+            element={
+              <PageLayout Header={<NavigationMenu />}>
+                <PublicPage />
+              </PageLayout>
             }
           />
           <Route
@@ -74,7 +81,7 @@ export const AppRouter = () => {
               </ProtectedRoute>
             }
           />
-          <Route path="/" element={<Navigate to="/ref-examples" replace />} />
+          <Route path="/" element={<Navigate to="/profile" replace />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </AuthContextProvider>
