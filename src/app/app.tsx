@@ -1,9 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { BrowserRouter, Router } from 'react-router-dom';
-
-import { AuthContextProvider } from 'features/authRouting/AuthContextProvider.tsx';
 
 import { AppRouter } from './router.tsx';
 import { store } from './store/store.ts';
