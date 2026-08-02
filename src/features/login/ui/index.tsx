@@ -6,8 +6,7 @@ import { type SubmitHandler, useForm } from 'react-hook-form';
 import { apiErrorSchema, type TApiError } from 'shared/types';
 import { Button, TextInput } from 'shared/ui';
 
-import { authLoginPost } from 'entities/auth';
-import type { IAuthLoginPostResponse } from 'entities/auth/model';
+import { authLoginPost, type IAuthLoginPostResponse } from 'entities/auth';
 
 import { type ValuesSchema, valuesSchema } from '../model';
 
@@ -22,7 +21,6 @@ export const Login: React.FC<ILoginProps> = ({ onSuccess }) => {
   const {
     register,
     handleSubmit,
-    control,
     formState: { errors },
     reset,
   } = useForm<ValuesSchema>({
@@ -66,6 +64,12 @@ export const Login: React.FC<ILoginProps> = ({ onSuccess }) => {
       <div className={styles.form_item}>
         <Button type="submit">Войти</Button>
       </div>
+
+      {error ? (
+        <div className={styles.error_text}>
+          {error.message || 'Что-то пошло не так'}
+        </div>
+      ) : null}
     </form>
   );
 };
