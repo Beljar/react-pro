@@ -71,16 +71,17 @@ export const AppRouter = () => {
               </PageLayout>
             }
           />
-          <Route
-            path="/profile"
-            element={
-              <ProtectedRoute>
+          <Route element={<ProtectedRoute />}>
+            <Route
+              path="/profile"
+              element={
                 <PageLayout Header={<NavigationMenu />}>
                   <ProfilePage />
                 </PageLayout>
-              </ProtectedRoute>
-            }
-          />
+              }
+            />
+          </Route>
+
           <Route path="/" element={<Navigate to="/profile" replace />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

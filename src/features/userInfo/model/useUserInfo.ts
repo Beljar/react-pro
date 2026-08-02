@@ -14,6 +14,6 @@ export const useUserInfo = ({ accessToken }: IUseUserInfo) => {
       .then(({ data }) => setUserInfo(data))
       .catch(console.error)
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [accessToken]);
   return { userInfo, isLoading };
 };
