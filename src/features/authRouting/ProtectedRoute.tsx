@@ -9,7 +9,6 @@ interface IProtectedRoute {
 
 export const ProtectedRoute: React.FC<IProtectedRoute> = ({ children }) => {
   const authContext = useAuth();
-  console.log(authContext);
 
   if (!authContext.accessToken) {
     return <Navigate to="/login" replace />;

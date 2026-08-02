@@ -1,15 +1,22 @@
 import { NavLink } from 'react-router-dom';
 
+import { useAuth } from 'features/authRouting';
+
 import styles from './styles.module.scss';
 
-const menuItems = [
-  { label: 'Мои задачи', to: '/tasks' },
-  { label: 'Регистрация', to: '/signup' },
-  { label: 'Подписка', to: '/subscribe' },
-  { label: 'Ref examples', to: '/ref-examples' },
+const menuItemsPublic = [
+  { label: 'Публичная', to: '/public' },
+  { label: 'Вход', to: '/login' },
+];
+
+const menuItemsProtected = [
+  { label: 'Публичная', to: '/public' },
+  { label: 'Профиль', to: '/profile' },
 ];
 
 export const NavigationMenu = () => {
+  const { accessToken } = useAuth();
+  const menuItems = accessToken ? menuItemsProtected : menuItemsPublic;
   return (
     <nav className={styles.navigation} aria-label="Главная навигация">
       <div className={styles.brand}>React Pro</div>
