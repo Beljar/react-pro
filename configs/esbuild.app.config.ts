@@ -12,7 +12,6 @@ esbuild
     splitting: true,
     sourcemap: true,
     format: 'esm',
-    external: ['react', 'react-dom', 'react-router'],
   })
   .then(console.log)
   .catch(console.error);

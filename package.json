@@ -4,7 +4,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "npx tsx ./esbuild.ts && tsc",
+    "build": "npx tsx configs/esbuild.app.config.ts && tsc",
+    "build-lib": "npx tsx configs/esbuild.lib.config.ts && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,5 +24,9 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.23.11",
     "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "lodash-es": "^4.18.1",
+    "react": "^19.2.8"
   }
 }
