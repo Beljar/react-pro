@@ -4,8 +4,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "build": "npx tsx configs/esbuild.app.config.ts && tsc",
-    "build-lib": "npx tsx configs/esbuild.lib.config.ts && tsc",
+    "build:prod": "npx tsx configs/esbuild.app.prod.config.ts && tsc",
+    "build:dev": "npx tsx configs/esbuild.app.dev.config.ts && tsc",
+    "build:lib": "npx tsx configs/esbuild.lib.config.ts && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
