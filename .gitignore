@@ -11,6 +11,8 @@ node_modules
 dist
 dist-ssr
 dist-lib
+dist-swc-lib-esm
+dist-swc-lib-commojns
 *.local
 
 # Editor directories and files

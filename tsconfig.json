@@ -1,5 +1,14 @@
 {
+         "baseUrl":"./",
+   "paths":{
+      "*":[
+         "node_modules",
+         "lib/*",
+         "app/*"
+      ]
+   },
   "compilerOptions": {
+
 
     "rootDir": "./app",
     "outDir": "./dist",

@@ -1,5 +1,5 @@
-import { add } from 'lodash-es';
+import _ from 'lodash';
 
 export const sum = (a: number, b: number) => {
-  return add(a + b);
+  return _.add(a + b);
 };

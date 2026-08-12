@@ -2,11 +2,11 @@
   "name": "react_sber",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "build:prod": "npx tsx configs/esbuild.app.prod.config.ts && tsc",
     "build:dev": "npx tsx configs/esbuild.app.dev.config.ts && tsc",
     "build:lib": "npx tsx configs/esbuild.lib.config.ts && tsc",
+    "build:lib-swc": "npx spack --config ./configs/spack.config.commonjs.js && npx spack --config ./configs/spack.config.esm.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,6 +21,8 @@
   "homepage": "https://github.com/Beljar/react-pro#readme",
   "description": "",
   "devDependencies": {
+    "@swc/cli": "^0.8.1",
+    "@swc/core": "^1.15.47",
     "esbuild": "0.28.1",
     "ts-node": "^10.9.2",
     "tsx": "^4.23.11",
@@ -29,5 +31,8 @@
   "peerDependencies": {
     "lodash-es": "^4.18.1",
     "react": "^19.2.8"
+  },
+  "dependencies": {
+    "lodash": "^4.18.1"
   }
 }
