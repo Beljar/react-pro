@@ -6,11 +6,13 @@ import styles from './styles.module.scss';
 
 const menuItemsPublic = [
   { label: 'Публичная', to: '/public' },
+  { label: 'Портали', to: '/portal-showcase' },
   { label: 'Вход', to: '/login' },
 ];
 
 const menuItemsProtected = [
   { label: 'Публичная', to: '/public' },
+  { label: 'Портали', to: '/portal-showcase' },
   { label: 'Профиль', to: '/profile' },
 ];
 
