@@ -2,6 +2,8 @@ import type React from 'react';
 import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
+import { useTheme } from 'shared/context';
+
 import { Button } from '../Button';
 
 import styles from './ConfirmDialog.module.css';
@@ -23,6 +25,7 @@ export const ConfirmDialogComponent = ({
   onConfirm,
   onCancel,
 }: ConfirmDialogComponentProps) => {
+  const { theme } = useTheme();
   const dialogRoot = document.getElementById('confirm-dialog-root');
 
   if (!dialogRoot) {
@@ -38,7 +41,7 @@ export const ConfirmDialogComponent = ({
 
   return ReactDOM.createPortal(
     <div className={styles.backdrop} onClick={handleBackdropClick}>
-      <div className={styles.dialog}>
+      <div className={`${styles.dialog} ${styles[`theme-${theme}`]}`}>
         <h2 className={styles.title}>{title}</h2>
         {description && <div className={styles.description}>{description}</div>}
         <div className={styles.actions}>

@@ -1,6 +1,8 @@
 import { type ReactNode, useLayoutEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 
+import { useTheme } from 'shared/context';
+
 import { TooltipPosition } from './TooltipPosition';
 
 import styles from './Tooltip.module.css';
@@ -16,6 +18,7 @@ export const Tooltip = ({
   children,
   position = TooltipPosition.TOP,
 }: TooltipProps) => {
+  const { theme } = useTheme();
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({});
   const elementRef = useRef<HTMLDivElement>(null);
@@ -79,7 +82,7 @@ export const Tooltip = ({
       {isVisible &&
         ReactDOM.createPortal(
           <div
-            className={styles.tooltipContent}
+            className={`${styles.tooltipContent} ${styles[`theme-${theme}`]}`}
             style={tooltipStyle}
             data-tooltip-content
             onMouseEnter={() => setIsVisible(true)}

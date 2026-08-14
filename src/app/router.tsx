@@ -93,7 +93,10 @@ export const AppRouter = () => {
               />
             </Route>
 
-            <Route path="/" element={<Navigate to="/profile" replace />} />
+            <Route
+              path="/"
+              element={<Navigate to="/portal-showcase" replace />}
+            />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </AuthContextProvider>

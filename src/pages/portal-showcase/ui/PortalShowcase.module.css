@@ -5,11 +5,19 @@
   min-height: 100vh;
   background-color: #ffffff;
   color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
 }
 
 .container h1 {
   margin-top: 0;
-  margin-bottom: 32px;
+  margin-bottom: 0;
   font-size: 28px;
 }
 
@@ -25,6 +33,7 @@
   border-radius: 8px;
   background-color: #f9f9f9;
   border: 1px solid #e0e0e0;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .tooltipDemo {
@@ -62,4 +71,42 @@
   left: 0;
   font-weight: bold;
   color: #4caf50;
+}
+
+/* Theme variants */
+.theme-light {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.theme-light .section {
+  background-color: #f9f9f9;
+  border-color: #e0e0e0;
+}
+
+.theme-light h2 {
+  color: #333;
+}
+
+.theme-dark {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+}
+
+.theme-dark .section {
+  background-color: #2a2a2a;
+  border-color: #444;
+}
+
+.theme-dark h1 {
+  color: #f0f0f0;
+}
+
+
+.theme-dark h2 {
+  color: #f0f0f0;
+}
+
+.theme-dark .stat {
+  color: #f0f0f0;
 }

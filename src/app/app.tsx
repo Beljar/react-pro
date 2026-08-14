@@ -2,6 +2,8 @@ import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 
+import { ThemeProvider } from 'shared/context';
+
 import { AppRouter } from './router.tsx';
 import { store } from './store/store.ts';
 
@@ -11,7 +13,9 @@ const App = () => {
   return (
     <StrictMode>
       <Provider store={store}>
-        <AppRouter />
+        <ThemeProvider>
+          <AppRouter />
+        </ThemeProvider>
       </Provider>
     </StrictMode>
   );

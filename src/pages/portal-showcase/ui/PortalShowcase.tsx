@@ -1,5 +1,6 @@
 import { useState } from 'react';
 
+import { useTheme } from 'shared/context';
 import { Button } from 'shared/ui/Button';
 import { useConfirmDialog } from 'shared/ui/ConfirmDialog';
 import { Tooltip, TooltipPosition } from 'shared/ui/Tooltip';
@@ -7,6 +8,7 @@ import { Tooltip, TooltipPosition } from 'shared/ui/Tooltip';
 import styles from './PortalShowcase.module.css';
 
 export const PortalShowcase = () => {
+  const { theme, toggleTheme } = useTheme();
   const { showConfirmDialog } = useConfirmDialog();
   const [deleteCount, setDeleteCount] = useState(0);
 
@@ -24,8 +26,13 @@ export const PortalShowcase = () => {
   };
 
   return (
-    <div className={styles.container}>
-      <h1>Portal Components Showcase</h1>
+    <div className={`${styles.container} ${styles[`theme-${theme}`]}`}>
+      <div className={styles.header}>
+        <h1>Portal Components Showcase</h1>
+        <Button onClick={toggleTheme} variant="secondary">
+          Переключить тему ({theme === 'light' ? 'dark' : 'light'})
+        </Button>
+      </div>
 
       <div className={styles.section}>
         <h2>Tooltip Component</h2>
