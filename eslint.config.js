@@ -62,6 +62,7 @@ export default [
 
     rules: {
       ...boundaries.configs.recommended.rules,
+      'react-hooks/set-state-in-effect': 'off',
       'simple-import-sort/imports': [
         'warn',
         {
@@ -100,6 +101,14 @@ export default [
               from: { type: 'pages' },
               allow: {
                 to: { type: ['entities', 'features', 'widgets', 'shared'] },
+              },
+            },
+            {
+              from: { type: 'app' },
+              allow: {
+                to: {
+                  type: ['entities', 'features', 'widgets', 'shared', 'pages'],
+                },
               },
             },
           ],
