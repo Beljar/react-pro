@@ -1,50 +1,42 @@
 {
   "name": "react_sber",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "engines": {
-    "node": ">=22.16.0"
-  },
+  "version": "1.0.0",
+  "main": "index.js",
+
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "lint": "eslint .",
-    "preview": "vite preview"
+    "build:prod": "npx tsx configs/esbuild.app.prod.config.ts && tsc",
+    "build:dev": "npx tsx configs/esbuild.app.dev.config.ts && tsc",
+    "build:lib": "npx tsx configs/esbuild.lib.esm.config.ts && npx tsx configs/esbuild.lib.cjs.config.ts && tsc",
+    "build:lib:esm": "npx tsx configs/esbuild.lib.esm.config.ts && tsc",
+    "build:lib:cjs": "npx tsx configs/esbuild.lib.cjs.config.ts && tsc",
+    "build:lib:swc": "npx spack --config ./configs/spack.config.cjs.js && npx spack --config ./configs/spack.config.esm.js",
+    "build:lib:swc:cjs": "npx spack --config ./configs/spack.config.cjs.js",
+    "build:lib:swc:esm": "npx spack --config ./configs/spack.config.esm.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beljar/react-pro.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Beljar/react-pro/issues"
+  },
+  "homepage": "https://github.com/Beljar/react-pro#readme",
+  "description": "",
+  "devDependencies": {
+    "@swc/cli": "^0.8.1",
+    "@swc/core": "^1.15.47",
+    "esbuild": "0.28.1",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.11",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "lodash-es": "^4.18.1",
+    "react": "^19.2.8"
   },
   "dependencies": {
-    "@hookform/resolvers": "^5.4.0",
-    "@reduxjs/toolkit": "^2.12.0",
-    "axios": "^1.19.0",
-    "clsx": "^2.1.1",
-    "react": "^19.2.7",
-    "react-dom": "^19.2.7",
-    "react-hook-form": "^7.82.0",
-    "react-redux": "^9.3.0",
-    "react-router-dom": "^7.18.0",
-    "zod": "^4.4.3"
-  },
-  "devDependencies": {
-    "@types/node": "^24.13.2",
-    "@types/react": "^19.2.17",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^6.0.2",
-    "eslint": "^9.39.4",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-import-resolver-typescript": "^4.4.5",
-    "eslint-plugin-boundaries": "^6.0.2",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^7.1.1",
-    "eslint-plugin-react-refresh": "^0.5.3",
-    "eslint-plugin-simple-import-sort": "^13.0.0",
-    "globals": "^17.7.0",
-    "prettier": "^3.8.4",
-    "sass": "^1.101.0",
-    "typescript": "~6.0.2",
-    "typescript-eslint": "^8.61.0",
-    "vite": "^8.1.0",
-    "vite-tsconfig-paths": "^6.1.1"
+    "lodash": "^4.18.1"
   }
 }

@@ -1,1 +1,0 @@
-export { useGetTasksQuery } from './tasksApi';
