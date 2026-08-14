@@ -3,6 +3,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { PageNotFound } from 'shared/ui';
 import { PageLayout } from 'shared/ui/PageLayout';
 
+import { RefExamplesPage } from 'pages/refExamples/ui';
 import { SignupPage } from 'pages/signup/ui';
 import { SubscribePage } from 'pages/subscribe/ui';
 import { TaskPage } from 'pages/tasks';
@@ -39,7 +40,15 @@ export const AppRouter = () => {
             </PageLayout>
           }
         />
-        <Route path="/" element={<Navigate to="/signup" replace />} />
+        <Route
+          path="/ref-examples"
+          element={
+            <PageLayout Header={<NavigationMenu />}>
+              <RefExamplesPage />
+            </PageLayout>
+          }
+        />
+        <Route path="/" element={<Navigate to="/ref-examples" replace />} />
         <Route path="*" element={<PageNotFound />} />
       </Routes>
     </BrowserRouter>
