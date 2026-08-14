@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const swcConfig = JSON.parse(
   fs.readFileSync(
-    path.resolve(__dirname, '..', 'configs', 'commonjs.swcrc'),
+    path.resolve(__dirname, '..', 'configs', 'cjs.swcrc'),
     'utf-8'
   )
 );
@@ -20,7 +20,7 @@ module.exports = config({
     string: path.resolve(__dirname, '..', 'lib', 'string.ts'),
   },
   output: {
-    path: path.resolve(__dirname, '..', 'dist-swc-lib-commojns'),
+    path: path.resolve(__dirname, '..', 'dist-swc-lib-cjs'),
   },
   baseUrl: '../',
   options: {

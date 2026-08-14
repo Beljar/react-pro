@@ -4,20 +4,18 @@ import path from 'path';
 esbuild
   .build({
     entryPoints: [
-      path.resolve(process.cwd(), 'app', 'index.ts'),
-      path.resolve(process.cwd(), 'index.html'),
+      path.resolve(process.cwd(), 'lib', 'index.ts'),
+      path.resolve(process.cwd(), 'lib', 'math.ts'),
+      path.resolve(process.cwd(), 'lib', 'string.ts'),
     ],
     bundle: true,
-    outdir: 'dist',
+    outdir: 'dist-lib-esm',
     jsx: 'automatic',
     minify: true,
     treeShaking: true,
-    splitting: true,
     sourcemap: true,
     format: 'esm',
-    loader: {
-      '.html': 'copy',
-    },
+    external: ['react', 'lodash'],
   })
   .then(console.log)
   .catch(console.error);

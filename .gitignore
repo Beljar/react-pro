@@ -10,9 +10,10 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
-dist-lib
+dist-lib-cjs
+dist-lib-esm
 dist-swc-lib-esm
-dist-swc-lib-commojns
+dist-swc-lib-cjs
 *.local
 
 # Editor directories and files

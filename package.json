@@ -2,12 +2,16 @@
   "name": "react_sber",
   "version": "1.0.0",
   "main": "index.js",
+
   "scripts": {
     "build:prod": "npx tsx configs/esbuild.app.prod.config.ts && tsc",
     "build:dev": "npx tsx configs/esbuild.app.dev.config.ts && tsc",
-    "build:lib": "npx tsx configs/esbuild.lib.config.ts && tsc",
-    "build:lib-swc": "npx spack --config ./configs/spack.config.commonjs.js && npx spack --config ./configs/spack.config.esm.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:lib": "npx tsx configs/esbuild.lib.esm.config.ts && npx tsx configs/esbuild.lib.cjs.config.ts && tsc",
+    "build:lib:esm": "npx tsx configs/esbuild.lib.esm.config.ts && tsc",
+    "build:lib:cjs": "npx tsx configs/esbuild.lib.cjs.config.ts && tsc",
+    "build:lib:swc": "npx spack --config ./configs/spack.config.cjs.js && npx spack --config ./configs/spack.config.esm.js",
+    "build:lib:swc:cjs": "npx spack --config ./configs/spack.config.cjs.js",
+    "build:lib:swc:esm": "npx spack --config ./configs/spack.config.esm.js"
   },
   "repository": {
     "type": "git",
