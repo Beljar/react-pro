@@ -1,8 +1,6 @@
 import { type ReactNode, useLayoutEffect, useRef, useState } from 'react';
 import ReactDOM from 'react-dom';
 
-import { useTheme } from 'shared/context';
-
 import { TooltipPosition } from './TooltipPosition';
 
 import styles from './Tooltip.module.css';
@@ -11,14 +9,16 @@ interface TooltipProps {
   content: ReactNode;
   children: ReactNode;
   position?: TooltipPosition;
+  theme?: 'light' | 'dark';
 }
 
 export const Tooltip = ({
   content,
   children,
   position = TooltipPosition.TOP,
+  theme = 'light',
 }: TooltipProps) => {
-  const { theme } = useTheme();
+
   const [isVisible, setIsVisible] = useState(false);
   const [tooltipStyle, setTooltipStyle] = useState<React.CSSProperties>({});
   const elementRef = useRef<HTMLDivElement>(null);

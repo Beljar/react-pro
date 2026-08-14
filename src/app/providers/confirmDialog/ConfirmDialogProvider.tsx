@@ -1,10 +1,9 @@
 import { type ReactNode, useCallback, useState } from 'react';
 
-import { ConfirmDialogComponent } from './ConfirmDialog';
-import {
-  ConfirmDialogContext,
-  type ConfirmDialogOptions,
-} from './ConfirmDialogContext';
+import { ConfirmDialogContext, type ConfirmDialogOptions,useTheme } from 'shared/context';
+import { ConfirmDialogComponent } from 'shared/ui/ConfirmDialog';
+
+
 
 interface DialogState extends ConfirmDialogOptions {
   resolve?: (value: boolean) => void;
@@ -15,6 +14,7 @@ export const ConfirmDialogProvider = ({
 }: {
   children: ReactNode;
 }) => {
+  const {theme} = useTheme();
   const [dialog, setDialog] = useState<DialogState | null>(null);
 
   const showConfirmDialog = useCallback(
@@ -47,6 +47,7 @@ export const ConfirmDialogProvider = ({
           cancelText={dialog.cancelText}
           onConfirm={handleConfirm}
           onCancel={handleCancel}
+          theme={theme}
         />
       )}
     </ConfirmDialogContext.Provider>

@@ -1,7 +1,6 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
-import { PageNotFound } from 'shared/ui';
-import { ConfirmDialogProvider } from 'shared/ui/ConfirmDialog';
+import {  PageNotFound } from 'shared/ui';
 import { PageLayout } from 'shared/ui/PageLayout';
 
 import { LoginPage } from 'pages/login';
@@ -17,6 +16,8 @@ import { NavigationMenu } from 'widgets/navigationMenu';
 
 import { AuthContextProvider } from 'features/authRouting/AuthContextProvider';
 import { ProtectedRoute } from 'features/authRouting/ProtectedRoute';
+
+import { ConfirmDialogProvider } from './providers/confirmDialog';
 
 import './index.css';
 

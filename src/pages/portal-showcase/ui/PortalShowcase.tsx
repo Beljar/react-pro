@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
-import { useTheme } from 'shared/context';
+import { useConfirmDialog, useTheme } from 'shared/context';
 import { Button } from 'shared/ui/Button';
-import { useConfirmDialog } from 'shared/ui/ConfirmDialog';
 import { Tooltip, TooltipPosition } from 'shared/ui/Tooltip';
 
 import styles from './PortalShowcase.module.css';
@@ -39,22 +38,23 @@ export const PortalShowcase = () => {
         <p>Наведите на элементы, чтобы увидеть тултип:</p>
 
         <div className={styles.tooltipDemo}>
-          <Tooltip content="I'm at the top!" position={TooltipPosition.TOP}>
+          <Tooltip content="I'm at the top!" position={TooltipPosition.TOP} theme={theme}>
             <Button variant="secondary">Hover (Top)</Button>
           </Tooltip>
 
           <Tooltip
             content="I'm at the bottom!"
             position={TooltipPosition.BOTTOM}
+            theme={theme}
           >
             <Button variant="secondary">Hover (Bottom)</Button>
           </Tooltip>
 
-          <Tooltip content="I'm on the left!" position={TooltipPosition.LEFT}>
+          <Tooltip content="I'm on the left!" position={TooltipPosition.LEFT} theme={theme}>
             <Button variant="secondary">Hover (Left)</Button>
           </Tooltip>
 
-          <Tooltip content="I'm on the right!" position={TooltipPosition.RIGHT}>
+          <Tooltip content="I'm on the right!" position={TooltipPosition.RIGHT} theme={theme}>
             <Button variant="secondary">Hover (Right)</Button>
           </Tooltip>
         </div>

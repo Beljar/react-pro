@@ -2,8 +2,6 @@ import type React from 'react';
 import type { ReactNode } from 'react';
 import ReactDOM from 'react-dom';
 
-import { useTheme } from 'shared/context';
-
 import { Button } from '../Button';
 
 import styles from './ConfirmDialog.module.css';
@@ -13,6 +11,7 @@ interface ConfirmDialogComponentProps {
   description?: ReactNode;
   confirmText?: string;
   cancelText?: string;
+  theme?: 'light' | 'dark';
   onConfirm: () => void;
   onCancel: () => void;
 }
@@ -22,10 +21,11 @@ export const ConfirmDialogComponent = ({
   description,
   confirmText = 'Confirm',
   cancelText = 'Cancel',
+  theme = 'light',
   onConfirm,
   onCancel,
 }: ConfirmDialogComponentProps) => {
-  const { theme } = useTheme();
+
   const dialogRoot = document.getElementById('confirm-dialog-root');
 
   if (!dialogRoot) {
