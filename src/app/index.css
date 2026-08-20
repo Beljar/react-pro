@@ -62,6 +62,14 @@
   box-sizing: border-box;
 }
 
+#tooltip-root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+}
+
 body {
   margin: 0;
 }

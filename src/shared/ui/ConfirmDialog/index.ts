@@ -1,0 +1,1 @@
+export { ConfirmDialogComponent } from './ConfirmDialog';
