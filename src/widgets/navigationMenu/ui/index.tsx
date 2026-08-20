@@ -7,12 +7,14 @@ import styles from './styles.module.scss';
 const menuItemsPublic = [
   { label: 'Публичная', to: '/public' },
   { label: 'Порталы', to: '/portal-showcase' },
+  { label: 'React 19', to: '/react19-examples' },
   { label: 'Вход', to: '/login' },
 ];
 
 const menuItemsProtected = [
   { label: 'Публичная', to: '/public' },
   { label: 'Порталы', to: '/portal-showcase' },
+  { label: 'React 19', to: '/react19-examples' },
   { label: 'Профиль', to: '/profile' },
 ];
 

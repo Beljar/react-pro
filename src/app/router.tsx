@@ -7,6 +7,7 @@ import { LoginPage } from 'pages/login';
 import { PortalShowcase } from 'pages/portal-showcase';
 import { ProfilePage } from 'pages/profile';
 import { PublicPage } from 'pages/public';
+import { React19ExamplesPage } from 'pages/react19Examples';
 import { RefExamplesPage } from 'pages/refExamples/ui';
 import { SignupPage } from 'pages/signup/ui';
 import { SubscribePage } from 'pages/subscribe/ui';
@@ -83,6 +84,14 @@ export const AppRouter = () => {
                 </PageLayout>
               }
             />
+            <Route
+              path="/react19-examples"
+              element={
+                <PageLayout Header={<NavigationMenu />}>
+                  <React19ExamplesPage />
+                </PageLayout>
+              }
+            />
             <Route element={<ProtectedRoute />}>
               <Route
                 path="/profile"
@@ -96,7 +105,7 @@ export const AppRouter = () => {
 
             <Route
               path="/"
-              element={<Navigate to="/portal-showcase" replace />}
+              element={<Navigate to="/react19-examples" replace />}
             />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
